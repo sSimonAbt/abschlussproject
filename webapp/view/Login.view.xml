@@ -1,0 +1,23 @@
+<mvc:View controllerName="com.sbt.IHKProject.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" showHeader="false">
+        <FlexBox height="100%" width="100%" justifyContent="Center" alignItems="Center">
+            <Panel headerText="Login">
+                <InputListItem label="E-Mail">
+                    <Input class="sapUiMediumMarginBegin" type="Email" value="{/recipient/email}" placeholder="{i18n>EmailPlaceholder}" width="250px" liveChange=".validator.validateEmail"  />
+                </InputListItem>
+                <InputListItem label="Password">
+                    <!-- Todo: Check if empty required, if is empty, also deactivate the Login Button -->
+                    <Input class="sapUiMediumMarginBegin" type="Password" value="{/recipient/password}" placeholder="{i18n>PasswordPlaceholder}" width="250px"  />
+                </InputListItem>
+                <HBox justifyContent="End" class="sapUiSmallMarginTop sapUiSmallMarginEnd">
+                    <HBox >
+                        <!-- Todo: deactivate button on invalid input, login check happens in backend (successful or not) -->
+                        <Button text="Login" press=".onLoginPress" icon="sap-icon://arrow-right"/>
+                    </HBox>
+                </HBox>
+            </Panel>
+        </FlexBox>
+    </Page>
+</mvc:View>

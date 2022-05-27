@@ -1,0 +1,125 @@
+{
+  "_version": "1.36.0",
+  "sap.app": {
+    "id": "com.sbt.IHKProject",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "default": {
+        "uri": "/odata/sap/opu/odata/SAP/ZSBT_WEB_SHOP_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {},
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "com.sbt.IHKProject.view.Root",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.90.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "": {
+        "dataSource": "default",
+        "preload": true,
+        "settings": {
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        },
+        "i18n": {
+          "type": "sap.ui.model.resource.ResourceModel",
+          "settings": {
+            "bundleName": "com.sbt.IHKProject.i18n.i18n"
+          }
+        },
+        "CartModel": {
+          "type": "sap.ui.model.json.JSONModel"
+        }
+      }
+    },
+    "resources": {
+      "css": [{
+        "uri": "css/style.css"
+      }]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.sbt.IHKProject.view",
+        "async": true,
+        "controlId": "app",
+        "controlAggregation": "pages"
+      },
+      "routes": [{
+          "name": "Default",
+          "pattern": "",
+          "target": [
+            "Login"
+          ]
+        },
+        {
+          "name": "HomeView",
+          "pattern": "RouteHomeView",
+          "target": [
+            "TargetHomeView"
+          ]
+        },
+        {
+          "name": "CartView",
+          "pattern": "RouteCartView",
+          "target": [
+            "TargetCartView"
+          ]
+        }
+      ],
+      "targets": {
+        "Login": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Login",
+          "viewName": "Login"
+        },
+        "TargetHomeView": {
+          "viewType": "XML",
+          "viewId": "overview",
+          "viewName": "Overview"
+        },
+        "TargetCartView": {
+          "viewType": "XML",
+          "viewId": "cart",
+          "viewName": "Cart"
+        }
+      }
+    }
+  }
+}

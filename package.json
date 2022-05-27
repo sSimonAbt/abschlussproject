@@ -1,0 +1,48 @@
+{
+  "name": "IHKProject",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "ui5 serve --config=ui5.yaml  --open index.html",
+    "build:ui": "run-s  build:",
+    "test": "run-s lint karma",
+    "karma-ci": "karma start karma-ci.conf.js",
+    "clearCoverage": "shx rm -rf coverage",
+    "karma": "run-s clearCoverage karma-ci",
+    "lint": "eslint ./**/webapp/**/*.js && prettier --plugin-search-dir=. --check ./**/webapp/**/*.{js,xml}",
+    "lint-fix": "eslint ./**/webapp/**/*.js --fix && prettier --plugin-search-dir=. --write ./**/webapp/**/*.{js,xml} --no-error-on-unmatched-pattern",
+    "deploy": "run-s build:ui",
+    "serve:": "ui5 serve --config=ui5.yaml",
+    "build:": "ui5 build --config=ui5.yaml --clean-dest --a --dest dist"
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^2.2.0",
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.8",
+    "@sapui5/ts-types": "^1.102.1",
+    "@ui5/cli": "^2.14.9",
+    "cross-var": "^1.1.0",
+    "eslint": "^8.16.0",
+    "karma": "^6.3.20",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "^2.2.0",
+    "karma-ui5": "^2.4.0",
+    "mbt": "^1.2.16",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.2",
+    "shx": "^0.3.4",
+    "ui5-middleware-livereload": "^0.5.13",
+    "ui5-middleware-route-proxy": "*",
+    "ui5-middleware-simpleproxy": "^0.8.4",
+    "ui5-task-nwabap-deployer": "*",
+    "ui5-task-zipper": "^0.4.13"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-livereload",
+      "ui5-task-zipper",
+      "ui5-middleware-livereload",
+      "ui5-task-nwabap-deployer",
+      "ui5-middleware-route-proxy",
+      "ui5-middleware-simpleproxy"
+    ]
+  }
+}

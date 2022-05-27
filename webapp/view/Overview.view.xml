@@ -1,0 +1,52 @@
+<mvc:View controllerName="com.sbt.IHKProject.controller.Overview" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page title="{i18n>title}" id="HomeView">
+		<headerContent>
+			<Button icon="sap-icon://home" press=".onHome" visible="{appView>/smallScreenMode}"/>
+			<Button icon="sap-icon://account" id="CustomerQuickView" press=".onAccount" visible="{appView>/smallScreenMode}" ariaHasPopup="Dialog"/>
+			<Button id="CartButton" class="sapUiTinyMarginBeginEnd" icon="sap-icon://cart" press=".onCart">
+				<customData>
+					<BadgeCustomData key="badge" value="" visible=""/>
+				</customData>
+			</Button>
+		</headerContent>
+		<subHeader>
+			<Toolbar id="searchBar">
+				<!-- Todo: A Lot, enjoy ;-)  -->
+				<SearchField id="searchField" liveChange=".onSearch" placeholder="{i18n>homeSearchPlaceholder}" tooltip="{i18n>homeSearchTooltip}" width="100%"></SearchField>
+			</Toolbar>
+		</subHeader>
+		<Panel id="panelForArticleList">
+			<Table class="sapUiLargeMarginBottom" headerText="{i18n>ArticleHeaderText}" items="{/articleSet}">
+				<columns>
+					<Column>
+						<Text text="{i18n>ArticleName}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>Description}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>Price}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>Currency}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>Unit}"/>
+					</Column>
+					<Column>
+					</Column>
+				</columns>
+				<ColumnListItem>
+					<Text text="{ArticleName}"/>
+					<Text text="{Description}"/>
+					<Text text="{Price}"/>
+					<Text text="{Currency}"/>
+					<Text text="{Unit}"/>
+					<Button text="{i18n>addtoCart}" press=".onAddtoCart" icon="sap-icon://add-product" type="Accept"/>
+				</ColumnListItem>
+			</Table>
+		</Panel>
+	</Page>
+</mvc:View>

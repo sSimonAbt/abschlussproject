@@ -1,0 +1,8 @@
+ <mvc:View controllerName="com.sbt.IHKProject.controller.Cart"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc">
+  <Page title="{i18n>title}" id="CartView" showNavButton="{appView>/smallScreenMode}" navButtonPress=".onBack" showFooter="true" >
+      <!-- Todo: entire content missing: add binding of model, enable preview of my cart! -->
+  </Page>
+</mvc:View>
