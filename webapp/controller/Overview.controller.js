@@ -1,18 +1,14 @@
 sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, MessageBox) {
     "use strict";
 
+    const DEFAULT_QUANTITY = 1;
+
     return Controller.extend("com.sbt.IHKProject.controller.Overview", {
         onInit: function () {
-            var oModel = this.getView().getModel("CartModel");
-            // oModel.setProperty("/CartData/Data");
-            console.log(this.getOwnerComponent().getModel("CartModel"));
-
-            // console.log(this.)
-            // console.log(this.getView().getModel("CartModel"));
         },
 
         onCart: function () {
-            this.getRouter(this).navTo("CartView");
+            this.getRouter().navTo("CartView");
         },
 
         onHome: function () {
@@ -20,25 +16,27 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
         },
 
         onAddToCart: function (oEvent) {
+            //todo, use resource bundle to use translatable text here
             MessageBox.confirm("Do you want to add this Product to your cart?");
-            let oTableLine = oEvent.getSource().getBindingContext().getObject();
-            const oArticle = {
+
+            const oTableLine = oEvent.getSource().getBindingContext().getObject();
+            const oRelevantArticleData = {
                 ArticleID: oTableLine.ArticleId,
                 ArticleName: oTableLine.ArticleName,
                 Description: oTableLine.Description,
-                Quantity: 1,
+                Quantity: DEFAULT_QUANTITY,
                 Price: oTableLine.Price,
                 Currency: oTableLine.Currency,
                 Unit: oTableLine.Unit,
             };
 
-            const oModel = this.getView().getModel("CartModel");
+            const oModel = this.getModel("CartModel");
             const oData = Object.assign({}, oModel.getData()["Cart"]);
 
-            const oCartEntry = oData[oTableLine.ArticleId];
+            let oCartEntry = oData[oTableLine.ArticleId];
             if (oCartEntry === undefined) {
-                oCartEntry = Object.assign({}, oArticle);
-                oData[oArticle.ArticleID] = oArticle;
+                oCartEntry = Object.assign({}, oRelevantArticleData);
+                oData[oRelevantArticleData.ArticleID] = oRelevantArticleData;
             }
             else {
                 // add 1 to quantity
