@@ -31,6 +31,8 @@
 					</Column>
 					<Column>
 					</Column>
+					<Column>
+					</Column>
 				</columns>
 				<ColumnListItem>
 					<Text text="{CartModel>ArticleName}"/>
@@ -39,14 +41,21 @@
 					<Text text="{CartModel>Currency}"/>
 					<Text text="{CartModel>Unit}"/>
 					<Text text="{CartModel>Quantity}"/>
+					<Button text="{i18n>editQuantity}" press=".onEditQuantity" icon="sap-icon://edit"/>
 					<Button text="{i18n>removeItem}" press=".onRemoveItem" icon="sap-icon://decline" type="Reject"/>
 				</ColumnListItem>
 			</Table>
 		</Panel>
 	<HBox justifyContent="End" class="sapUiResponsiveMargin sapUiSmallMarginEnd">
-		<Button text="Order" 
-        	    press=".onLoginPress" 
-            	icon="sap-icon://arrow-right"/>
+				<Button
+					id="proceedButton"
+					type="Accept"
+					text="{i18n>Proceed}"
+					enabled="{
+						path: 'CartModel>Cart',
+						formatter: '.formatter.hasItems'
+					}"
+					press=".onProceed"/>
     </HBox>  
   </Page>
 </mvc:View>

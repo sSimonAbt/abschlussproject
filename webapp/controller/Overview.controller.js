@@ -32,10 +32,10 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
                 Unit: oTableLine.Unit,
             };
 
-            const oModel = this.getView().getModel("CartModel");
-            const oData = Object.assign({}, oModel.getData()["Cart"]);
+            var oModel = this.getView().getModel("CartModel");
+            var oData = Object.assign({}, oModel.getData()["Cart"]);
 
-            const oCartEntry = oData[oTableLine.ArticleId];
+            var oCartEntry = oData[oTableLine.ArticleId];
             if (oCartEntry === undefined) {
                 oCartEntry = Object.assign({}, oArticle);
                 oData[oArticle.ArticleID] = oArticle;
