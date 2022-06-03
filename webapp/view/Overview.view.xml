@@ -43,7 +43,7 @@
 					<Text text="{Price}"/>
 					<Text text="{Currency}"/>
 					<Text text="{Unit}"/>
-					<Button text="{i18n>addtoCart}" press=".onAddtoCart" icon="sap-icon://add-product" type="Accept"/>
+					<Button text="{i18n>addtoCart}" press=".onAddToCart" icon="sap-icon://add-product" type="Accept"/>
 				</ColumnListItem>
 			</Table>
 		</Panel>

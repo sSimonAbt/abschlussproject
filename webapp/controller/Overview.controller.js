@@ -1,70 +1,52 @@
-sap.ui.define([
-    "./BaseController",
-    "sap/m/MessageBox",
-], function (Controller, MessageBox ) {
+sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, MessageBox) {
     "use strict";
 
-    return Controller.extend("com.sbt.IHKProject.controller.Overview", {   
+    return Controller.extend("com.sbt.IHKProject.controller.Overview", {
+        onInit: function () {
+            var oModel = this.getView().getModel("CartModel");
+            // oModel.setProperty("/CartData/Data");
+            console.log(this.getOwnerComponent().getModel("CartModel"));
 
-    onInit: function(){
-        var oModel = this.getView().getModel("CartModel");
-        // oModel.setProperty("/CartData/Data");
-        console.log(this.getOwnerComponent().getModel("CartModel"));
+            // console.log(this.)
+            // console.log(this.getView().getModel("CartModel"));
+        },
 
-        // console.log(this.)
-        // console.log(this.getView().getModel("CartModel"));
-    },
+        onCart: function () {
+            this.getRouter(this).navTo("CartView");
+        },
 
-    onCart: function(){
-        this.getRouter(this).navTo("CartView");
-    },
+        onHome: function () {
+            // console.log(this.getView().getModel("CartModel"));
+        },
 
-    onHome: function(){
-        // console.log(this.getView().getModel("CartModel"));
-    },
+        onAddToCart: function (oEvent) {
+            MessageBox.confirm("Do you want to add this Product to your cart?");
+            let oTableLine = oEvent.getSource().getBindingContext().getObject();
+            const oArticle = {
+                ArticleID: oTableLine.ArticleId,
+                ArticleName: oTableLine.ArticleName,
+                Description: oTableLine.Description,
+                Quantity: 1,
+                Price: oTableLine.Price,
+                Currency: oTableLine.Currency,
+                Unit: oTableLine.Unit,
+            };
 
-    onAddtoCart: function(oEvent){
-        MessageBox.confirm("Do you want to add this Product to your cart?");
-        // var oButton = oEvent.getSource();
-        // var oBindingContext = oButton.getBindingContext();
-        // var oArticle = oBindingContext.getObject();
-        let oTableLine = oEvent.getSource().getBindingContext().getObject();
-        console.log(oTableLine); 
-        const oArticle = {ArticleID: oTableLine.ArticleId, 
-                          ArticleName: oTableLine.ArticleName, 
-                          Description: oTableLine.Description, 
-                          Price: oTableLine.Price, 
-                          Unit: oTableLine.Unit};
-        let oModel = this.getView().getModel("CartModel");
-        var oData = oModel.getData();
-        oModel.setProperty("/Cart", [oArticle]); 
-        console.log(oModel.getData());
-        
-        oData.Cart.push(oArticle);
-        console.log("GET", oData);
-        // oModel.setData(oArticle, false);
-        console.log("Test", oModel);
-        
+            const oModel = this.getView().getModel("CartModel");
+            const oData = Object.assign({}, oModel.getData()["Cart"]);
 
-        // var aData = oModel.getProperty("/CartData");
-        // aData.push.apply(aData, oArticle);
-        // oModel.setProperty("/CartData", aData);  
-
-        // console.log("Test", this.getView().getModel("CartModel"));
-
-
-        // this.getView().getModel("CartModel").setData(oArticle, true);
-
-        // console.log("Selected row Object:", oArticle);
-        
-        // console.log("Articles:", sArticles);
-
-        // var oCartModel = new sap.ui.model.json.JSONModel("model/CartModel");
-        // oCartModel = this.getView().setModel("CartModel");
-        // // console.log("Test", this.getView().getModel());
-        // oCartModel.setData(oArticle);
-        
-        
-        }
-	});
+            const oCartEntry = oData[oTableLine.ArticleId];
+            if (oCartEntry === undefined) {
+                oCartEntry = Object.assign({}, oArticle);
+                oData[oArticle.ArticleID] = oArticle;
+            }
+            else {
+                // add 1 to quantity
+                console.log("wir sind im else zweig");
+                oData[oTableLine.ArticleId].Quantity += 1;
+                console.log("oData", oData);
+            }
+            oModel.setProperty("/Cart", oData);
+        },
+    });
 });

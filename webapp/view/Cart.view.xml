@@ -27,6 +27,9 @@
 						<Text text="{i18n>Unit}"/>
 					</Column>
 					<Column>
+						<Text text="{i18n>Quantity}"/>
+					</Column>
+					<Column>
 					</Column>
 				</columns>
 				<ColumnListItem>
@@ -35,6 +38,7 @@
 					<Text text="{CartModel>Price}"/>
 					<Text text="{CartModel>Currency}"/>
 					<Text text="{CartModel>Unit}"/>
+					<Text text="{CartModel>Quantity}"/>
 					<Button text="{i18n>removeItem}" press=".onRemoveItem" icon="sap-icon://decline" type="Reject"/>
 				</ColumnListItem>
 			</Table>
