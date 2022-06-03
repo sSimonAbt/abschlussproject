@@ -1,9 +1,9 @@
 sap.ui.define(
-    ["./BaseController", "sap/ui/model/json/JSONModel", "sap/m/MessageBox", "sap/m/MessageToast"],
+    ["./BaseController", "sap/ui/model/json/JSONModel"],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox) {
+    function (Controller) {
         "use strict";
 
         return Controller.extend("com.sbt.IHKProject.controller.Login", {
@@ -23,9 +23,9 @@ sap.ui.define(
                 // //Read from View
                 var email = this.getView().getModel().getProperty("/customer_dataSet/email");
                 var password = this.getView().getModel().getProperty("/recipient/password");/*  */
-                
+
                 console.log(email, password);
-                
+
                 // //Proof if Variables are filled
                 // if (isEmptyValue(email) == true || isEmptyValue(password) == true) {
                 // //     //PopUp Message to User
@@ -38,7 +38,7 @@ sap.ui.define(
 
             //    var oModel = this.getOwnerComponent().getModel("default");
             //    var stest = oModel.read("customer_dataSet(email)");
-                
+
                 this.getRouter(this).navTo("HomeView");
             },
         });
