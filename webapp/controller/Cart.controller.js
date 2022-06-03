@@ -12,7 +12,7 @@ sap.ui.define(["./BaseController"], function (Controller) {
             console.log("Einkaufswagen", oModel);
 
             // this.getView().setModel("CartModel");
-            
+
         },
     });
 });
