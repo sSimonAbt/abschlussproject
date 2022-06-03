@@ -21,18 +21,24 @@ sap.ui.define(
             //Show alert
             onLoginPress: function () {
                 // //Read from View
-                // var email = this.getView().getModel().getProperty("/recipient/email");
-                // var password = this.getView().getModel().getProperty("/recipient/password");
-
+                var email = this.getView().getModel().getProperty("/customer_dataSet/email");
+                var password = this.getView().getModel().getProperty("/recipient/password");/*  */
+                
+                console.log(email, password);
+                
                 // //Proof if Variables are filled
                 // if (isEmptyValue(email) == true || isEmptyValue(password) == true) {
-                //     //PopUp Message to User
+                // //     //PopUp Message to User
                 //     MessageBox.alert("Please enter an Emai-Adress and Password!");
                 // } else {
-                //     //Proof Email and Password in Database than -> Nav Forward to Web-Shop
-                //     var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                //     oRouter.navTo("HomeView");
+                // //     //Proof Email and Password in Database than -> Nav Forward to Web-Shop
+                //     // var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                //     this.getRouter(this).navTo("HomeView");
                 // }
+
+            //    var oModel = this.getOwnerComponent().getModel("default");
+            //    var stest = oModel.read("customer_dataSet(email)");
+                
                 this.getRouter(this).navTo("HomeView");
             },
         });

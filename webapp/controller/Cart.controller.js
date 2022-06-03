@@ -7,7 +7,12 @@ sap.ui.define(["./BaseController"], function (Controller) {
             // therefore access by the ownerComponent (Component.js, the base of the app) is required
             // when accessing the Model somewhere else i.e. on button click within the already rendered/loaded view, access via
             // this.getView().getModel ... is possible!
-            this.getOwnerComponent().getModel("CartModel");
+            console.log("hallo");
+            const oModel = this.getOwnerComponent().getModel("CartModel");
+            console.log("Einkaufswagen", oModel);
+
+            // this.getView().setModel("CartModel");
+            
         },
     });
 });

@@ -3,7 +3,7 @@
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page title="{i18n>title}" id="HomeView">
 		<headerContent>
-			<Button icon="sap-icon://home" press=".onHome" visible="{appView>/smallScreenMode}"/>
+			<!-- <Button icon="sap-icon://home" press=".onHome" visible="{appView>/smallScreenMode}"/> -->
 			<Button icon="sap-icon://account" id="CustomerQuickView" press=".onAccount" visible="{appView>/smallScreenMode}" ariaHasPopup="Dialog"/>
 			<Button id="CartButton" class="sapUiTinyMarginBeginEnd" icon="sap-icon://cart" press=".onCart">
 				<customData>
@@ -13,7 +13,6 @@
 		</headerContent>
 		<subHeader>
 			<Toolbar id="searchBar">
-				<!-- Todo: A Lot, enjoy ;-)  -->
 				<SearchField id="searchField" liveChange=".onSearch" placeholder="{i18n>homeSearchPlaceholder}" tooltip="{i18n>homeSearchTooltip}" width="100%"></SearchField>
 			</Toolbar>
 		</subHeader>
