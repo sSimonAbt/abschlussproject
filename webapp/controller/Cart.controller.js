@@ -25,6 +25,9 @@ sap.ui.define(["./BaseController"], function (Controller) {
         },
         onRemoveItem() {
 
+        },
+        onNavToHome(){
+            this.navTo("HomeView");
         }
     });
 });

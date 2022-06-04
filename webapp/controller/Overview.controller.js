@@ -15,10 +15,6 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
             this.getRouter(this).navTo("CartView");
         },
 
-        onHome: function () {
-            // console.log(this.getView().getModel("CartModel"));
-        },
-
         onAddToCart: function (oEvent) {
             MessageBox.confirm("Do you want to add this Product to your cart?");
             let oTableLine = oEvent.getSource().getBindingContext().getObject();
@@ -32,7 +28,7 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
                 Unit: oTableLine.Unit,
             };
 
-            var oModel = this.getView().getModel("CartModel");
+            var oModel = this.getModel("CartModel");
             var oData = Object.assign({}, oModel.getData()["Cart"]);
 
             var oCartEntry = oData[oTableLine.ArticleId];

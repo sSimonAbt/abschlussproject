@@ -3,6 +3,9 @@
   xmlns="sap.m"
   xmlns:mvc="sap.ui.core.mvc">
   <Page title="{i18n>cart}" id="CartView" showNavButton="{appView>/smallScreenMode}" navButtonPress=".onBack" showFooter="true" >
+  <headerContent>
+	<Button icon="sap-icon://home" press=".onNavToHome" visible="{appView>/smallScreenMode}"/>
+  </headerContent>
 	<HBox justifyContent="End" class="sapUiResponsiveMargin sapUiSmallMarginEnd">
 	<Button text="Order" 
             press=".onLoginPress" 
