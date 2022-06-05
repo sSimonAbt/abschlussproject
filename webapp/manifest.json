@@ -1,5 +1,5 @@
 {
-  "_version": "1.36.0",
+  "_version": "1.37.0",
   "sap.app": {
     "id": "com.sbt.IHKProject",
     "type": "application",
