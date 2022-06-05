@@ -11,10 +11,6 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
             this.getRouter().navTo("CartView");
         },
 
-        onHome: function () {
-            // console.log(this.getView().getModel("CartModel"));
-        },
-
         onAddToCart: function (oEvent) {
             //todo, use resource bundle to use translatable text here
             MessageBox.confirm("Do you want to add this Product to your cart?");
@@ -34,6 +30,7 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
             const oData = Object.assign({}, oModel.getData()["Cart"]);
 
             let oCartEntry = oData[oTableLine.ArticleId];
+
             if (oCartEntry === undefined) {
                 oCartEntry = Object.assign({}, oRelevantArticleData);
                 oData[oRelevantArticleData.ArticleID] = oRelevantArticleData;

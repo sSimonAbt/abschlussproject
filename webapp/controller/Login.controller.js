@@ -39,7 +39,9 @@ sap.ui.define(
             //    var oModel = this.getOwnerComponent().getModel("default");
             //    var stest = oModel.read("customer_dataSet(email)");
 
-                this.getRouter(this).navTo("HomeView");
+                
+                this.navTo("HomeView");
+
             },
         });
     }
