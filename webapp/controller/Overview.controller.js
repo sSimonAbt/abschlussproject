@@ -36,10 +36,7 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
                 oData[oRelevantArticleData.ArticleID] = oRelevantArticleData;
             }
             else {
-                // add 1 to quantity
-                console.log("wir sind im else zweig");
                 oData[oTableLine.ArticleId].Quantity += 1;
-                console.log("oData", oData);
             }
             oModel.setProperty("/Cart", oData);
         },

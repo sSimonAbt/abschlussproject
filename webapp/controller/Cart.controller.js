@@ -1,18 +1,8 @@
-sap.ui.define(["./BaseController"], function (Controller) {
+sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, MessageBox) {
     "use strict";
 
     return Controller.extend("com.sbt.IHKProject.controller.Cart", {
         onInit() {
-            // when the view is getting instantiated there is no access on the model (as it has not yet been binded/added to the view)
-            // therefore access by the ownerComponent (Component.js, the base of the app) is required
-            // when accessing the Model somewhere else i.e. on button click within the already rendered/loaded view, access via
-            // this.getView().getModel ... is possible!
-            console.log("hallo");
-            const oModel = this.getOwnerComponent().getModel("CartModel").getData()["Cart"];
-            console.log("Einkaufswagen", oModel);
-
-            // this.getView().setModel("CartModel");
-
         },
         onEditQuantity(oEvent) {
             // let oTableLine = oEvent.getSource().getBindingContext().getObject();
@@ -23,10 +13,25 @@ sap.ui.define(["./BaseController"], function (Controller) {
 
             // oModel.setProperty("/Cart", oData);
         },
-        onRemoveItem() {
+        onRemoveItem(oEvent) {
+            MessageBox.confirm("Do you want to remove your Product from the cart?");
+
+            const oBindingContext = oEvent.getSource().getBindingContext();
+            console.log("BindingContext", oBindingContext);
+
+
+            // console.log("oTableLine", oCartModel); 
+            // const oCartModel = this.getModel("CartModel");
+            // console.log("oCartModelbefore", oCartModel); 
+            // const oEntries = Object.assign({}, oCartModel.getData()["Cart"]);
+            // console.log("Entries", oEntries); 
+            // delete oEntries[oTableLine.ArticleId];
+            // console.log("oCartModelafter", oEntries); 
+            // oCartModel.setProperty(oCartModel.setProperty("/Cart", Object.assign({}, oEntries)));
+            // console.log("oCartModelafter", oCartModel); 
 
         },
-        onNavToHome(){
+        onNavToHome()  {
             this.navTo("HomeView");
         }
     });
