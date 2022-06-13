@@ -6,11 +6,6 @@
   <headerContent>
 	<Button icon="sap-icon://home" press=".onNavToHome" visible="{appView>/smallScreenMode}"/>
   </headerContent>
-	<HBox justifyContent="End" class="sapUiResponsiveMargin sapUiSmallMarginEnd">
-	<Button text="Order" 
-            press=".onLoginPress" 
-            icon="sap-icon://arrow-right"/>
-    </HBox>  
 	  <Panel id="panelForCartList">
 			<Table class="sapUiLargeMarginBottom" headerText="{i18n>ArticleHeaderText}" items="{CartModel>/Cart}">
 				<columns>

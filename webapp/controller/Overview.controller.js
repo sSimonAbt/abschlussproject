@@ -1,14 +1,15 @@
-sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, MessageBox) {
+sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, MessageBox, Fragment) {
     "use strict";
 
     const DEFAULT_QUANTITY = 1;
 
     return Controller.extend("com.sbt.IHKProject.controller.Overview", {
         onInit: function () {
+
         },
 
         onCart: function () {
-            this.getRouter().navTo("CartView");
+            this.navTo("CartView");
         },
 
         onAddToCart: function (oEvent) {

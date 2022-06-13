@@ -13,7 +13,6 @@
                             liveChange=".validator.validateEmail"  />
                 </InputListItem>
                 <InputListItem label="Password">
-                    <!-- Todo: Check if empty required, if is empty, also deactivate the Login Button -->
                     <Input class="sapUiMediumMarginBegin" 
                             type="Password" 
                             value="{customer_dataSet/password}" 
@@ -22,7 +21,6 @@
                 </InputListItem>
                 <HBox justifyContent="End" class="sapUiSmallMarginTop sapUiSmallMarginEnd">
                     <HBox >
-                        <!-- Todo: deactivate button on invalid input, login check happens in backend (successful or not) -->
                         <Button text="Login" 
                                 press=".onLoginPress" 
                                 icon="sap-icon://arrow-right"/>
@@ -32,3 +30,4 @@
         </FlexBox>
     </Page>
 </mvc:View>
+

@@ -16,11 +16,8 @@ sap.ui.define(["./BaseController", "sap/m/MessageBox"], function (Controller, Me
         onRemoveItem(oEvent) {
             MessageBox.confirm("Do you want to remove your Product from the cart?");
 
-            const oBindingContext = oEvent.getSource().getBindingContext();
-            console.log("BindingContext", oBindingContext);
-
-
-            // console.log("oTableLine", oCartModel); 
+            const oTableLine = oEvent.getSource().getBindingContext();
+            // console.log("oTableLine", oTableLine); 
             // const oCartModel = this.getModel("CartModel");
             // console.log("oCartModelbefore", oCartModel); 
             // const oEntries = Object.assign({}, oCartModel.getData()["Cart"]);
